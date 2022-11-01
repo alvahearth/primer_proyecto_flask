@@ -8,10 +8,11 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from decouple import config
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = "1234"
+    app.config['SECRET_KEY'] = config('SECRET_KEY')
     return app
 
 def create_db(app):
