@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Tu nombre</h1>
+        <br>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            {{ form.name.label }}
+            {{ form.name() }}
+
+            {{ form.email.label }}
+            {{ form.email() }}
+            <br>
+            {{ form.submit() }}
+        </form>
+
+        <br>
+        {% for our_user in our_users %}
+
+        <p>
+            {{ our_user.name }}
+        </p>    
+            {{ our_user.email }}
+            {{ our_user.id }}
+        {% endfor %}
+
+{% endblock content %}

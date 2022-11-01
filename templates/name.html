@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% for message in get_flashed_messages() %}
+    {{ message }}
+{% endfor %}
+
+
     {% if name %}
         <h1>Hello {{name}}</h1>
+        <br>
+        <img src="{{ url_for('static', filename = 'images/def.jpg') }}" alt=""
+        width="700px">
+        <p id="demo"></p>
+
+
     {% else %}
         <h1>Tu nombre</h1>
         <br>
