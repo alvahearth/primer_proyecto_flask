@@ -16,7 +16,14 @@ def create_app():
     return app
 
 def create_db(app):
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/tekke/OneDrive/Escritorio/programs/curso-python/archivos_flask/flask_03/users.db'
+    
+    #Sqlite db
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/tekke/OneDrive/Escritorio/programs/curso-python/archivos_flask/flask_03/users.db'
+
+    #MySQL db
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/users'
+
+
     db = SQLAlchemy(app)
         
     return db
