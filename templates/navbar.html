@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('name') }}">name</a>
@@ -15,9 +15,29 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('add_user') }}">Agregar</a>
           </li>
-        
-         
+
+          <li>
+            <a class="nav-link" href="{{ url_for('spend_notes') }}">Gasto fijo</a>
+        </li>
+            
         </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="navbar-text" style="margin-right: 10px;">
+            <a href="#" style="pointer-events:none; cursor: default; text-decoration: none;">
+              <div>
+                <time id="clock"></time>
+            </div>
+                    
+
+          </a>
+       
+            
+          </li>
+
+          
+        </ul>
+
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -25,3 +45,6 @@
       </div>
     </div>
   </nav>
+
+
+    

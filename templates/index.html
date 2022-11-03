@@ -5,11 +5,27 @@
     <p>my name is {{ first_name }}</p>
     <h3>Favoritos</h3>
 
+    
+
     {% for fav in favorites %}
         <p>{{ fav }}</p>
     {% endfor %}
 
-    
+
+    <h1>
+        Nuestros usuarios
+    </h1>
+    {% for user in all_users  %}
+        <h3>
+            Nombre: {{ user.name }}
+        </h3>
+        <p>
+            Email: {{ user.email }}
+        </p>
+        <hr>
+    {% endfor %}
+
+   
 {% endblock %}
 
 

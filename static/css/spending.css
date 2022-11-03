@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.main-text {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#current-money {
+    width: 230px;
+    margin: 0 10px;
+}
+
+button {
+    margin: 10px 0;
+}
+
+#main-items {
+    padding: 15px;
+    border:  1px solid;
+    list-style-type: none;
+}
+
+.name {
+    margin-left: auto;
+    margin-right: 110px;
+}
+
+.price {
+    float: right;
+}
+
+#total-spend {
+    text-align: center;
+}
+
+.otros {
+    margin: 10px;
+    
+}
+
+.l-otros {
+    margin: 10px;
+}
+

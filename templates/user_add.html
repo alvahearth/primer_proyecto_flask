@@ -19,8 +19,10 @@
         <br>
         {% for our_user in our_users %}
 
-        <p>
-            {{ our_user.name }}
+        <p>Nombre: 
+            <a href="{{ url_for('update', id=our_user.id)}}">
+                {{ our_user.name }}
+            </a>
         </p>    
             {{ our_user.email }}
             {{ our_user.id }}

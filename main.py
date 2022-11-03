@@ -2,7 +2,7 @@ import email
 from email.policy import default
 from msilib import init_database
 from django.shortcuts import render
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -16,7 +16,6 @@ def create_app():
     return app
 
 def create_db(app):
-    
     #Sqlite db
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/tekke/OneDrive/Escritorio/programs/curso-python/archivos_flask/flask_03/users.db'
 
@@ -56,9 +55,11 @@ class UserForm(FlaskForm):
 def index():
     first_name = "raul"
     favorites = ["pepperoni", "cheese", "pineapple"]
+    all_users = Users.query.order_by(Users.date_added)
     return render_template('index.html', 
                             first_name=first_name, 
-                            favorites=favorites)
+                            favorites=favorites,
+                            all_users=all_users)
 
 @app.route('/user/<name>')
 def user(name):
@@ -101,6 +102,37 @@ def add_user():
     return render_template('user_add.html', form=form, name=name, our_users=our_users)
 
 
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    form = UserForm()
+    name_to_update = Users.query.get_or_404(id)
+    if request.method == 'POST':
+        name_to_update.name = request.form['name']
+        name_to_update.email = request.form['email']
+        try:
+            db.session.commit()
+            flash('Actuliaste correctamente')
+            return render_template('user_add.html')
+        except:
+            flash('Error')
+            return render_template('update.html',
+                form=form,
+                name_to_update=name_to_update
+            )
+    else:
+        return render_template('update.html',
+                form=form,
+                name_to_update=name_to_update
+            )
+
+
+@app.route('/spending')
+def spend_notes():
+    return render_template('spending.html')
+
+@app.route('/clima')
+def weather():
+    return render_template('weather.html')
+
 if __name__ == '__main__':
-    
     app.run(debug=True)
