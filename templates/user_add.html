@@ -2,6 +2,8 @@
 
 {% block content %}
 
+
+
 <h1>Tu nombre</h1>
         <br>
         <form method="POST">
@@ -12,6 +14,13 @@
 
             {{ form.email.label }}
             {{ form.email() }}
+
+            {{ form.password_hash.label }}
+            {{ form.password_hash }}
+
+            {{ form.password_hash2.label }}
+            {{ form.password_hash2 }}
+
             <br>
             {{ form.submit() }}
         </form>
